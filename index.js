@@ -15,10 +15,14 @@ const shoppingListEl = document.getElementById("shopping-list")
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
+    if (inputValue === "") {
+        inputFieldEl.focus()
+    }
+    else{
+        push(shoppingListInDB, inputValue)
+        clearInputFieldEl()
+    }
     
-    push(shoppingListInDB, inputValue)
-    
-    clearInputFieldEl()
 })
 
 onValue(shoppingListInDB, function(snapshot) {
